@@ -117,10 +117,24 @@ function draw() {
   line(155, 350, posicion1, 120);
   line(350, 350, posicion2, 190);
   line (250, 350,posicion3, 110);
-  var posicionX = posicion1 + 10;
 
+  // encontramos la linea que va de (155, 350) a (posicion1, 120) para saber
+  // el x para cada rama
+  x1 = 155
+  y1 = 350
+  x2 = posicion1
+  y2 = 120
+  m = (y1 - y2) / (x1 - x2)
+  b = y1 - m*x1
+  
+  // altura deseada
+  y = 350-150
+  x = (y - b)/m
+  
   //INTENTO DE RAMAS QUE SE MUEVAN VER
-  line(posicion1, 350, posicionX, 340);
+  
+  line(x, y, x-10, y-10);
+  line(x, y, x+10, y-10);
   
   //puntos estrellas
   var senoangulo2 = sin(angulo2);
