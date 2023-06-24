@@ -34,7 +34,7 @@ function draw() {
     for (var i = 150; i < 390; i += 50) { //determino coordenada donde quiero que empiece a dibujarse el primer árbol (será en 150) y la última (máx 390)
       stroke(150);
       strokeWeight(0.5);
-      line(i, 320, i, 200);
+      line(i, 320, i, 200); //si cambio y inicial a 350 queda a la altura de la linea piso
     }
   
     //variables de inicio y fin para los troncos lejanos
@@ -72,7 +72,7 @@ function draw() {
     for (var p = 130; p < 390; p += 50) { //dibuja líneas que empiezan en 130 y se van dibujando cada 50 en X
       stroke(80);
       strokeWeight(1);
-      line(p, 330, p, 150);
+      line(p, 330, p, 150); //si cambio y inicial a 350 queda a la altura de la linea piso
     }
   
     //variables de inicio y fin para troncos intermedios
@@ -111,47 +111,113 @@ function draw() {
   angulo += 0.01;
 
   
-  //líneas troncos árboles cercanos negros
+  //líneas troncos árboles cercanos blancos
   stroke(255);
-  strokeWeight(1.5);
-  line(155, 350, posicion1, 120);
-  line(350, 350, posicion2, 190);
-  line (250, 350,posicion3, 110);
+  strokeWeight(1);
+  line(155, 350, posicion1, 120); //arbol izquierdo
+  line(350, 350, posicion2, 190); //arbol derecho
+  line (250, 350,posicion3, 110); //arbol intermedio
 
-  // encontramos la linea que va de (155, 350) a (posicion1, 120) para saber
-  // el x para cada rama
-  x1 = 155
-  y1 = 350
-  x2 = posicion1
-  y2 = 120
-  m = (y1 - y2) / (x1 - x2)
-  b = y1 - m*x1
-  
-  // altura deseada
-  y = 350-150
-  x = (y - b)/m
-  
-  //INTENTO DE RAMAS QUE SE MUEVAN VER
-  
-  line(x, y, x-10, y-10);
-  line(x, y, x+10, y-10);
-  
-  //puntos estrellas
-  var senoangulo2 = sin(angulo2);
-  var posicionestrella = map (senoangulo2, -1, 1, 0,520);
-  angulo2 += 0.001;
+  //RAMAS EN MOVIMIENTO-------------
 
-  point (200,100);
-  point (310,200);
-  point (80,50);
-  point (150,50);
-  point (300,50);
-  point (400,50);
-  point (50,100);
-  point (50,200);
-  point (400,100);
-  point (20,70);
-  point(posicionestrella,70);  
+  //ARBOL IZQUIERDO----------
+    //encuentro la recta que va de (155, 350) a (posicion1, 120) para saber el x para cada rama
+    x1 = 155
+    y1 = 350
+    x2 = posicion1
+    y2 = 120
+    m = (y1 - y2) / (x1 - x2)
+    b = y1 - m*x1
+    
+    //altura inicial
+    var y = 340;
+    x = (y - b)/m
+    
+    
+    //for que dibuja las ramas del arbol de la izquierda
+    for (i=0; i<20; i++){
+      y = y - 10;
+      x = (y - b)/m
+      line(x, y, x-10, y-10); //rama izquierda
+      line(x, y, x+10, y-10); //rama derecha
+    }
+
+  //ARBOL DERECHO-----
+   x1 = 350
+   y1 = 350
+   x2 = posicion2
+   y2 = 190
+   m = (y1 - y2) / (x1 - x2)
+   b = y1 - m*x1
+   
+   //altura inicial
+   var y = 340;
+   x = (y - b)/m
+   
+   
+   //for que dibuja las ramas del arbol de la izquierda
+   for (i=0; i<19; i++){
+     y = y - 7;
+     x = (y - b)/m
+     line(x, y, x-10, y-10); //rama izquierda
+     line(x, y, x+10, y-10); //rama derecha
+   }
+  //ARBOL INTERMEDIO-----
+   //encuentro la recta que va de (155, 350) a (posicion1, 120) para saber el x para cada rama
+   x1 = 250
+   y1 = 350
+   x2 = posicion3
+   y2 = 110
+   m = (y1 - y2) / (x1 - x2)
+   b = y1 - m*x1
+   
+   //altura inicial
+   var y = 340;
+   x = (y - b)/m
+   
+   
+   //for que dibuja las ramas del arbol de la izquierda
+   for (i=0; i<14; i++){
+     y = y - 15;
+     x = (y - b)/m
+     line(x, y, x-10, y-10); //rama izquierda
+     line(x, y, x+10, y-10); //rama derecha
+   }
+
+
+  //------------------ESTRELLAS---------------------
+    var senoangulo2 = sin(angulo2);
+    var posicionestrella = map (senoangulo2, -1, 1, 0,520);
+    angulo2 += 0.001;
+
+    point (200,100);
+    point (310,200);
+    point (80,50);
+    point (150,50);
+    point (300,50);
+    point (400,50);
+    point (250,20);
+    point (490, 100);
+    point (490, 50);
+    point (300,50);
+    point (410, 200);
+    point (430,190);
+    point (350,100);
+    point (90,300);
+
+    strokeWeight(0.5);
+    line(0,350,520,350);
+
+    strokeWeight(2);
+    point (50,100);
+    point (50,200);
+    point (400,100);
+    point (20,70);
+    point (30, 50);
+    point(posicionestrella,70);  
+    point (100, 50);
+    point (260,90);
+    point (410,60);
 
 
  
