@@ -5,20 +5,17 @@ let contador = 0;
 
 function setup() {
   createCanvas(512, 512);
-  line(random(100, 350), 320, random(100, 350), random(120, 250));
 }
 
 function draw() {
   background(10);
-  //console.log(mouseX, mouseY);
 
+  //CÓDIGO VIEJO:
   //Rectángulo blanco
   /*strokeWeight(1);
   fill(255);
   stroke(150);
   rect(100, 100, 300);*/
-
-  //detalles de habitacion similar a Nees
 
   //líneas de la perspectiva
   /*stroke(150);
@@ -26,9 +23,9 @@ function draw() {
   line(512, 0, 400, 100);
   line(0, 512, 100, 400);
   line(512, 512, 400, 400); */
-
   
-
+  //line(random(100, 350), 320, random(100, 350), random(120, 250));
+  
   //----------------------------------TRONCOS LEJANOS-------------------
 
     for (var i = 150; i < 390; i += 50) { //determino coordenada donde quiero que empiece a dibujarse el primer árbol (será en 150) y la última (máx 390)
@@ -105,7 +102,7 @@ function draw() {
   
   //----------------------------------TRONCOS CERCANOS-------------------
   var senoangulo = sin(angulo);
-  var posicion1 = map(senoangulo, -1, 1, 140, 155);
+  var posicion1 = map(senoangulo, -1, 1, 140, 160);
   var posicion2 = map(senoangulo, -1, 1, 340, 350);
   var posicion3 = map(senoangulo, -1, 1, 240,255)
   angulo += 0.01;
@@ -114,35 +111,36 @@ function draw() {
   //líneas troncos árboles cercanos blancos
   stroke(255);
   strokeWeight(1);
-  line(155, 350, posicion1, 120); //arbol izquierdo
+  line(160, 350, posicion1, 120); //arbol izquierdo
   line(350, 350, posicion2, 190); //arbol derecho
   line (250, 350,posicion3, 110); //arbol intermedio
 
   //RAMAS EN MOVIMIENTO-------------
 
   //ARBOL IZQUIERDO----------
-    //encuentro la recta que va de (155, 350) a (posicion1, 120) para saber el x para cada rama
-    x1 = 155
-    y1 = 350
-    x2 = posicion1
-    y2 = 120
-    m = (y1 - y2) / (x1 - x2)
-    b = y1 - m*x1
+    //encuentro la ecuación de la recta que va de (160, 350) a (posicion1, 120) para saber el X incógnito para cada rama
+    //DATOS:
+    x1 = 160 //x inicio del arbol izquierdo
+    y1 = 350 //altura inicio del arbol
+    x2 = posicion1 //como el árbol se mueve, su posición final depende del movimiento seno
+    y2 = 120 //altura final del arbol
+
+    m = (y1 - y2) / (x1 - x2) //averiguo pendiente
+    b = y1 - m*x1 //averiguo ord al origen
     
-    //altura inicial
-    var y = 340;
-    x = (y - b)/m
-    
+    //altura inicial rama más abajo
+    var y = 340;    
     
     //for que dibuja las ramas del arbol de la izquierda
     for (i=0; i<20; i++){
-      y = y - 10;
-      x = (y - b)/m
+      y = y - 10; //voy reiniciando la Y para que vaya subiendo
+      x = (y - b)/m //el valor de x depende de quién es Y
       line(x, y, x-10, y-10); //rama izquierda
       line(x, y, x+10, y-10); //rama derecha
     }
 
   //ARBOL DERECHO-----
+  //busco nuevamente la recta para poder despejar el X en movimiento de cada rama
    x1 = 350
    y1 = 350
    x2 = posicion2
@@ -152,18 +150,17 @@ function draw() {
    
    //altura inicial
    var y = 340;
-   x = (y - b)/m
    
    
    //for que dibuja las ramas del arbol de la izquierda
    for (i=0; i<19; i++){
-     y = y - 7;
+     y = y - 7; //el -7 es porque quise cambiar la cantidad de ramas que había
      x = (y - b)/m
      line(x, y, x-10, y-10); //rama izquierda
      line(x, y, x+10, y-10); //rama derecha
    }
+
   //ARBOL INTERMEDIO-----
-   //encuentro la recta que va de (155, 350) a (posicion1, 120) para saber el x para cada rama
    x1 = 250
    y1 = 350
    x2 = posicion3
@@ -172,9 +169,7 @@ function draw() {
    b = y1 - m*x1
    
    //altura inicial
-   var y = 340;
-   x = (y - b)/m
-   
+   var y = 340;   
    
    //for que dibuja las ramas del arbol de la izquierda
    for (i=0; i<14; i++){
@@ -205,9 +200,6 @@ function draw() {
     point (350,100);
     point (90,300);
 
-    strokeWeight(0.5);
-    line(0,350,520,350);
-
     strokeWeight(2);
     point (50,100);
     point (50,200);
@@ -219,6 +211,8 @@ function draw() {
     point (260,90);
     point (410,60);
 
-
+  //linea de horizonte
+  strokeWeight(0.5);
+  line(0,350,520,350);
  
 }
