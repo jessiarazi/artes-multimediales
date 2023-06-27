@@ -118,7 +118,7 @@ function draw() {
   //RAMAS EN MOVIMIENTO-------------
 
   //ARBOL IZQUIERDO----------
-    //encuentro la ecuación de la recta que va de (160, 350) a (posicion1, 120) para saber el X incógnito para cada rama
+    //encuentro la ecuación de la recta (arbol) que va de (160, 350) a (posicion1, 120) para saber el X incógnito para cada rama
     //DATOS:
     x1 = 160 //x inicio del arbol izquierdo
     y1 = 350 //altura inicio del arbol
@@ -134,13 +134,13 @@ function draw() {
     //for que dibuja las ramas del arbol de la izquierda
     for (i=0; i<20; i++){
       y = y - 10; //voy reiniciando la Y para que vaya subiendo
-      x = (y - b)/m //el valor de x depende de quién es Y
-      line(x, y, x-10, y-10); //rama izquierda
+      x = (y - b)/m //el valor de x depende de quién es Y. X sería un punto de la recta que es el árbol, que se modifica todo el tiempo. Es el X inicial de cada rama que es el que se mueve
+      line(x, y, x-10, y-10); //rama izquierda. Acá el X final es x-10 y va a funcionar bien porque x inicial está en movimiento, por eso va a estar en movimiento también x final.
       line(x, y, x+10, y-10); //rama derecha
     }
 
   //ARBOL DERECHO-----
-  //busco nuevamente la recta para poder despejar el X en movimiento de cada rama
+  //busco nuevamente la recta del arbol para poder despejar el X en movimiento de cada rama
    x1 = 350
    y1 = 350
    x2 = posicion2
@@ -148,7 +148,7 @@ function draw() {
    m = (y1 - y2) / (x1 - x2)
    b = y1 - m*x1
    
-   //altura inicial
+   //altura inicial primera rama
    var y = 340;
    
    
@@ -168,7 +168,7 @@ function draw() {
    m = (y1 - y2) / (x1 - x2)
    b = y1 - m*x1
    
-   //altura inicial
+   //altura inicial primera rama
    var y = 340;   
    
    //for que dibuja las ramas del arbol de la izquierda
