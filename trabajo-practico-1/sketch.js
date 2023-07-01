@@ -85,21 +85,21 @@ function draw() {
 
   
   //----------------------------------TRONCOS CERCANOS-------------------
-  var senoangulo = sin(angulo);
-  var posicion1 = map(senoangulo, -1, 1, 140, 160);
-  var posicion2 = map(senoangulo, -1, 1, 340, 350);
-  var posicion3 = map(senoangulo, -1, 1, 240,255)
-  angulo += 0.01;
+    var senoangulo = sin(angulo);
+    var posicion1 = map(senoangulo, -1, 1, 140, 160);
+    var posicion2 = map(senoangulo, -1, 1, 340, 350);
+    var posicion3 = map(senoangulo, -1, 1, 240,255)
+    angulo += 0.01;
 
-  
-  //líneas troncos árboles cercanos blancos
-  stroke(255);
-  strokeWeight(1);
-  line(160, 350, posicion1, 120); //arbol izquierdo
-  line(350, 350, posicion2, 190); //arbol derecho
-  line (250, 350,posicion3, 110); //arbol intermedio
+    
+    //líneas troncos árboles cercanos blancos
+    stroke(255);
+    strokeWeight(1);
+    line(160, 350, posicion1, 120); //arbol izquierdo
+    line(350, 350, posicion2, 190); //arbol derecho
+    line (250, 350,posicion3, 110); //arbol intermedio
 
-  //RAMAS EN MOVIMIENTO-------------
+  //--------------RAMAS EN MOVIMIENTO-------------
 
   //ARBOL IZQUIERDO----------
     //encuentro la ecuación de la recta (arbol) que va de (160, 350) a (posicion1, 120) para saber el X incógnito para cada rama
@@ -124,44 +124,44 @@ function draw() {
     }
 
   //ARBOL DERECHO-----
-  //busco nuevamente la recta del arbol para poder despejar el X en movimiento de cada rama
-   x1 = 350
-   y1 = 350
-   x2 = posicion2
-   y2 = 190
-   m = (y1 - y2) / (x1 - x2)
-   b = y1 - m*x1
-   
-   //altura inicial primera rama
-   var y = 340;
-   
-   
-   //for que dibuja las ramas del arbol de la izquierda
-   for (i=0; i<19; i++){
-     y = y - 7; //el -7 es porque quise cambiar la cantidad de ramas que había
-     x = (y - b)/m
-     line(x, y, x-10, y-10); //rama izquierda
-     line(x, y, x+10, y-10); //rama derecha
-   }
+    //busco nuevamente la recta del arbol para poder despejar el X en movimiento de cada rama
+    x1 = 350
+    y1 = 350
+    x2 = posicion2
+    y2 = 190
+    m = (y1 - y2) / (x1 - x2)
+    b = y1 - m*x1
+    
+    //altura inicial primera rama
+    var y = 340;
+    
+    
+    //for que dibuja las ramas del arbol de la izquierda
+    for (i=0; i<19; i++){
+      y = y - 7; //el -7 es porque quise cambiar la cantidad de ramas que había
+      x = (y - b)/m
+      line(x, y, x-10, y-10); //rama izquierda
+      line(x, y, x+10, y-10); //rama derecha
+    }
 
   //ARBOL INTERMEDIO-----
-   x1 = 250
-   y1 = 350
-   x2 = posicion3
-   y2 = 110
-   m = (y1 - y2) / (x1 - x2)
-   b = y1 - m*x1
-   
-   //altura inicial primera rama
-   var y = 340;   
-   
-   //for que dibuja las ramas del arbol de la izquierda
-   for (i=0; i<14; i++){
-     y = y - 15;
-     x = (y - b)/m
-     line(x, y, x-10, y-10); //rama izquierda
-     line(x, y, x+10, y-10); //rama derecha
-   }
+    x1 = 250
+    y1 = 350
+    x2 = posicion3
+    y2 = 110
+    m = (y1 - y2) / (x1 - x2)
+    b = y1 - m*x1
+    
+    //altura inicial primera rama
+    var y = 340;   
+    
+    //for que dibuja las ramas del arbol de la izquierda
+    for (i=0; i<14; i++){
+      y = y - 15;
+      x = (y - b)/m
+      line(x, y, x-10, y-10); //rama izquierda
+      line(x, y, x+10, y-10); //rama derecha
+    }
 
 
   //------------------ESTRELLAS---------------------
@@ -195,24 +195,8 @@ function draw() {
     point (260,90);
     point (410,60);
 
-  //linea de horizonte
+  //---------LINEA DE HORIZONTE-----------
   strokeWeight(0.5);
   line(0,350,520,350);
  
 }
-
-//CÓDIGO VIEJO:
-  //Rectángulo blanco
-  /*strokeWeight(1);
-  fill(255);
-  stroke(150);
-  rect(100, 100, 300);*/
-
-  //líneas de la perspectiva
-  /*stroke(150);
-  line(0, 0, 100, 100);
-  line(512, 0, 400, 100);
-  line(0, 512, 100, 400);
-  line(512, 512, 400, 400); */
-  
-  //line(random(100, 350), 320, random(100, 350), random(120, 250));
