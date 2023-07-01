@@ -9,22 +9,6 @@ function setup() {
 
 function draw() {
   background(10);
-
-  //CÓDIGO VIEJO:
-  //Rectángulo blanco
-  /*strokeWeight(1);
-  fill(255);
-  stroke(150);
-  rect(100, 100, 300);*/
-
-  //líneas de la perspectiva
-  /*stroke(150);
-  line(0, 0, 100, 100);
-  line(512, 0, 400, 100);
-  line(0, 512, 100, 400);
-  line(512, 512, 400, 400); */
-  
-  //line(random(100, 350), 320, random(100, 350), random(120, 250));
   
   //----------------------------------TRONCOS LEJANOS-------------------
 
@@ -216,3 +200,19 @@ function draw() {
   line(0,350,520,350);
  
 }
+
+//CÓDIGO VIEJO:
+  //Rectángulo blanco
+  /*strokeWeight(1);
+  fill(255);
+  stroke(150);
+  rect(100, 100, 300);*/
+
+  //líneas de la perspectiva
+  /*stroke(150);
+  line(0, 0, 100, 100);
+  line(512, 0, 400, 100);
+  line(0, 512, 100, 400);
+  line(512, 512, 400, 400); */
+  
+  //line(random(100, 350), 320, random(100, 350), random(120, 250));
