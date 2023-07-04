@@ -1,7 +1,6 @@
 //declaración de variables
 let angulo = 0.0;
 let angulo2 = 0.0;
-let contador = 0;
 
 function setup() {
   createCanvas(512, 512);
@@ -25,7 +24,7 @@ function draw() {
     var xfinal = 160; //parámetro primera rama
     var xfinalizq = 140; //150 (xinicio) -10
   
-    //Este for se itera 5 veces, que es la cantidad de árboles (x). Solo creé la variable numArboles para la repetición del for, no se usa dentro de ninguna figura
+    //Este for se itera 5 veces, que es la cantidad de árboles (x). 
     for (var numArboles = 0; numArboles < 5; numArboles += 1) {
       
       //Este for se itera 11 veces que es la cantidad de ramas por árbol (y)
@@ -53,7 +52,7 @@ function draw() {
     for (var p = 130; p < 390; p += 50) { //dibuja líneas que empiezan en 130 y se van dibujando cada 50 en X
       stroke(80);
       strokeWeight(1);
-      line(p, 330, p, 150); //si cambio y inicial a 350 queda a la altura de la linea piso
+      line(p, 330, p, 150);
     }
   
     //variables de inicio y fin para troncos intermedios
@@ -124,7 +123,7 @@ function draw() {
     }
 
   //ARBOL DERECHO-----
-    //busco nuevamente la recta del arbol para poder despejar el X en movimiento de cada rama
+    //busco nuevamente la recta del arbol para poder despejar el X en movimiento de cada rama (que es un x que varía dentro de la recta del tronco que se mueve)
     x1 = 350
     y1 = 350
     x2 = posicion2
@@ -198,5 +197,4 @@ function draw() {
   //---------LINEA DE HORIZONTE-----------
   strokeWeight(0.5);
   line(0,350,520,350);
- 
 }
